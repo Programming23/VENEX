@@ -35,9 +35,15 @@
 
     <div class="container">
         <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">Command</span>
+            <span class="btn btn-warning input-group-text" id="inputGroup-sizing-default">Command</span>
             <input type="text" id="type" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="/ch ">
-          </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="btn btn-success input-group-text" id="basic-addon1">Chanel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <input type="text" id="chanel" value="WIZCHECKER" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+          
           
         <div class="input-group">
             <span class="input-group-text">Generator</span>
@@ -87,13 +93,13 @@
             function sleep(ms) {
                 return new Promise(resolve => setTimeout(resolve, ms));
             }
-            const group = 'WIZCHECKER';
+            const group = document.getElementById('chanel').value;
             const message = 'fack you achraf lahyaned';
             var num = Math.floor(Math.random() * (token.length-1));
             const ms = urls.length;
 
             for (let index = 0; index < ms; index++) {
-                if (index % 10 == 0){
+                if (index % 5 == 0){
                     num +=1;
                 }
 
