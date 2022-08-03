@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #eee;
+        }
+        .container{
+            margin-top: 100px;
+            width: 450px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .container > *{
+            border-radius: 5px;
+        }
+
+        textarea{
+            min-height: 150px !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Command</span>
+            <input type="text" id="type" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="/ch ">
+          </div>
+          
+        <div class="input-group">
+            <span class="input-group-text">Generator</span>
+            <textarea class="form-control" id="textarea" aria-label="With textarea"></textarea>
+        </div>
+        <button type="button" class="btn btn-primary" id="btn">save</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        async function fetchAsync (url) {
+            let response = await fetch(url);
+        }
+
+        button = document.getElementById('btn')
+
+        button.onclick = () => {
+            data = document.querySelector('#textarea').value;
+            type = document.getElementById('type').value
+            urls = data.split('\n')
+        
+            const token = [
+                "5405896266:AAEJ3ys5YGYnsZH2mbwCibyBN-jUz7sVGho",
+                "5303895970:AAFlIyXZq35p1lCxPo_IoowAE6Xm-SfIOqg",
+                "5450989550:AAHfsadyn2xTODBBiEy5g_q_xxlsmzHDDjg",
+                "5531348667:AAGKb1St2T08GWlVMOHUb8NjQEP8It1ADQc",
+                "5556787750:AAF_9pxWxbXhIWIkBvpFiN6eV3Q62xq3Cy0",
+                "5440466832:AAGzaynhUcs3Dya2dBn5Rh7F7JlgU3eLkK4",
+                '5405405877:AAEN6fY5PLRSSb65TW2Z0rKoFUoAv2CQiM4',
+                '5546222396:AAH8WXedd5oR68MXH_-KVJNTvt_UyhTMcBs',
+                '5531373084:AAFiT-e4xy0HU9nTYjtWuPrfObjTqYCwdD4',
+                '5480738265:AAF49PL9TNloRh0Rb1Z7vttpAD9AmF2jfF8',
+                '5304240815:AAEquvG-bl8nCs4ymZnDt9_KSLvaXOPBJiA',
+                '5342964211:AAFYHd0_3EAgzwvMhqT0G9VyvaFCYp5KvN8',
+                '5490039097:AAF2BhAgd2LSMZLZmJ2lvv4zCHWYDBSW-DI',
+                '5218058146:AAHNzZ61dF5qTlG8jc-sEg76AUlBoEWKb7o',
+                '5576383918:AAGztY782Ot5MHxP3N1ndNEeDnO9EkH6WKU',
+                '5408775017:AAGAbLDgtC0dMEJxtGk3DZSeYOxY9eJoDJA',
+                '5429265538:AAGCh2Dqw-5gOeZiIqFbMyvJr8HRXPFPUas',
+                '5581246233:AAGNA2grYAg2jOZwYtqry5_41HLo8LdWW9U',
+                '5464259533:AAHzna4GDzVHXKZzjXQPXZKJcG5Tux4vao8',
+                '5549123021:AAEVNsziiAltOVCqTsSi7mi87tLimHL8a14',
+                '5558611579:AAHw5ZnkzftCwjBQDfmG76YPa6QOv4X37qY',
+            ]
+
+            function sleep(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+            const group = 'WIZCHECKER';
+            const message = 'fack you achraf lahyaned';
+            var num = Math.floor(Math.random() * (token.length-1));
+            const ms = urls.length;
+
+            for (let index = 0; index < ms; index++) {
+                if (index % 10 == 0){
+                    num +=1;
+                }
+
+                var y = fetchAsync(`https://api.telegram.org/bot${token[num]}/sendMessage?chat_id=@${group}&text=${type}${urls[index]}`) ;
+                
+                if (num == token.length -1){
+                    num = 0;
+                }
+                
+            }
+        }
+
+        
+        console.log('finished')
+    </script>
+</body>
+</html>
