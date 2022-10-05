@@ -50,6 +50,7 @@
             <textarea class="form-control" id="textarea" aria-label="With textarea"></textarea>
         </div>
         <button type="button" class="btn btn-primary" id="btn">save</button>
+        <button type="button" class="btn btn-primary" id="btn-fetch">fetch with no async</button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
@@ -58,15 +59,8 @@
         async function fetchAsync (url) {
             let response = await fetch(url);
         }
-
-        button = document.getElementById('btn')
-
-        button.onclick = () => {
-            data = document.querySelector('#textarea').value;
-            type = document.getElementById('type').value
-            urls = data.split('\n')
         
-            const token = [
+        const token = [
                 "5405896266:AAEJ3ys5YGYnsZH2mbwCibyBN-jUz7sVGho",
                 "5303895970:AAFlIyXZq35p1lCxPo_IoowAE6Xm-SfIOqg",
                 "5450989550:AAHfsadyn2xTODBBiEy5g_q_xxlsmzHDDjg",
@@ -93,6 +87,15 @@
             function sleep(ms) {
                 return new Promise(resolve => setTimeout(resolve, ms));
             }
+
+        button = document.getElementById('btn')
+
+        button.onclick = () => {
+            data = document.querySelector('#textarea').value;
+            type = document.getElementById('type').value
+            urls = data.split('\n')
+        
+            
             const group = document.getElementById('chanel').value;
             const message = 'fack you achraf lahyaned';
             var num = Math.floor(Math.random() * (token.length-1));
@@ -111,6 +114,34 @@
                 
             }
         }
+        
+        btn = document.getElementById('btn-fetch')
+
+        b.onctnlick = () => {
+            data = document.querySelector('#textarea').value;
+            type = document.getElementById('type').value
+            urls = data.split('\n')
+        
+            
+            const group = document.getElementById('chanel').value;
+            const message = 'fack you achraf lahyaned';
+            var num = Math.floor(Math.random() * (token.length-1));
+            const ms = urls.length;
+
+            for (let index = 0; index < ms; index++) {
+                if (index % 5 == 0){
+                    num +=1;
+                }
+
+                var y = fetch(`https://api.telegram.org/bot${token[num]}/sendMessage?chat_id=@${group}&text=${type}${urls[index]}`) ;
+                
+                if (num == token.length -1){
+                    num = 0;
+                }
+                
+            }
+        }
+
 
         
         console.log('finished')
